@@ -1,10 +1,10 @@
 # pychord [![Build Status](https://travis-ci.org/yuma-m/pychord.svg?branch=master)](https://travis-ci.org/yuma-m/pychord) [![Documentation Status](https://readthedocs.org/projects/pychord/badge/?version=latest)](http://pychord.readthedocs.io/en/latest/?badge=latest)
 
-![PyChord](./pychord.png)
+![DeepGuitarist](./guitar.png)
 
 ## Overview
 
-Pychord is a python library to handle musical chords.
+Deepguitarist is a python library to handle chords, scales, fretboards, their visualizations, and AI song writing on guitar.
 
 ## Installation
 
@@ -119,10 +119,9 @@ True
 
 ## Author
 
-- [Yuma Mihira](https://yuma.cloud/)
+- [Waerden](https://www.math.columbia.edu/~tedd2013/)
 
 ## License
 
 - MIT License
 
-Icon is made by [Freepik](https://www.flaticon.com/authors/freepik")
