@@ -19,7 +19,7 @@ def note_to_val(note):
     return NOTE_VAL_DICT[note]
 
 
-def val_to_note(val, scale="C"):
+def val_to_note(val, root="C"):
     """ Convert int to note
 
     >>> val_to_note(0)
@@ -28,11 +28,11 @@ def val_to_note(val, scale="C"):
     "D#"
 
     :type val: int
-    :param str scale: key scale
+    :param str root: root of the key
     :rtype: str
     """
-    val %= 12
-    return SCALE_VAL_DICT[scale][val]
+    val = (val + NOTE_VAL_DICT[root]) % 12
+    return SCALE_VAL_DICT[root][val]
 
 
 def transpose_note(note, transpose, scale="C"):
@@ -58,3 +58,5 @@ def display_on(on_note):
     if on_note:
         return "/{}".format(on_note)
     return ""
+
+

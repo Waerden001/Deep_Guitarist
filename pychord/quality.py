@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from .constants import QUALITY_DICT
+from .constants import QUALITY_DICT, SCALE_QUALITY_DICT
 from .utils import note_to_val, val_to_note
 
 
@@ -44,6 +44,8 @@ class Quality(object):
         :param bool visible: returns the name of notes if True
         :rtype: list[str|int]
         :return: components of chord quality
+
+        when visible=False, we don't have to % 12 since we might have a chord like E7(#9, b13), the relative degrees are greater than 12.  
         """
         root_val = note_to_val(root)
         components = [v + root_val for v in self.components]
@@ -100,3 +102,60 @@ class Quality(object):
         """
         for note in notes:
             self.append_note(note, root, scale)
+
+
+
+##TODO: Use factory to get rid of the overlap part of different Quality classes.
+
+
+class Scale_Quality(object):
+    """ Scale quality
+
+    :param str _quality: str expression of scale quality
+    """
+    def __init__(self, quality):
+        """ Constructor of scale quality
+
+        :param str quality: name of quality
+        """
+        if quality not in SCALE_QUALITY_DICT:
+            raise ValueError("unknown quality {}".format(quality))
+        self._quality = quality
+        self.components = list(SCALE_QUALITY_DICT[quality])
+
+    def __unicode__(self):
+        return self._quality
+
+    def __str__(self):
+        return self._quality
+
+    def __eq__(self, other):
+        if not isinstance(other, Scale_Quality):
+            raise TypeError("Cannot compare Scale_Quality object with {} object".format(type(other)))
+        return SCALE_QUALITY_DICT[self._quality] == SCALE_QUALITY_DICT[other.quality]
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
+    @property
+    def quality(self):
+        """ Get name of quality """
+        return self._quality
+
+    def get_components(self, root='C', visible=False):
+        """ Get components of scale quality
+
+        :param str root: the root note of the scale
+        :param bool visible: returns the name of notes if True
+        :rtype: list[str|int]
+        :return: components of scale quality
+        """
+        root_val = note_to_val(root)
+        components = [(v + root_val) % 12 for v in self.components]
+
+        if visible:
+            components = [val_to_note(c, scale=root) for c in components]
+
+        return components
+
+

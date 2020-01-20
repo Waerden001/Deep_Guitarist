@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from .constants import QUALITY_DICT
-from .quality import Quality
-from .utils import NOTE_VAL_DICT
+from .constants import QUALITY_DICT, SCALE_QUALITY_DICT
+from .quality import Quality, Scale_Quality
+from .utils import NOTE_VAL_DICT, note_to_val, val_to_note
+from collections import OrderedDict
 
 
 def parse(chord):
@@ -38,7 +39,7 @@ def parse(chord):
 
 
 def check_note(note, chord):
-    """ Return True if the note is valid.
+    """ Return True if the note is valid. e.g. M7 is not a valid chord, M is not a valid note.
 
     :param str note: note to check its validity
     :param str chord: the chord which includes the note
@@ -47,3 +48,44 @@ def check_note(note, chord):
     if note not in NOTE_VAL_DICT:
         raise ValueError("Invalid chord {}: Unknown note {}".format(chord, note))
     return True
+
+
+
+
+def parse_scale(scale):
+    """ Parse a string to get scale component
+
+    :param str chordscale: str expression of a scale, e.g. Cminblues, F#minpenta
+    :rtype: (str, OrderedDict)
+    :return: (scale_quality, dict of scale notes and relative degrees), e.g. (majpenta, ((0, "C"), (2,"D"),(4, "E"),(7, "G"), (9, "A"), (12, "C")))
+    """
+
+    if len(scale) > 1 and scale[1] in ("b", "#"):
+        root = scale[:2]
+        rest = scale[2:]
+    else:
+        root = scale[:1]
+        rest = scale[1:]
+    
+    print(root)
+
+    check_scale(root, scale)
+    if rest in SCALE_QUALITY_DICT:
+        quality = Scale_Quality(rest)
+    else:
+        raise ValueError("Invalid scale{}: Unknown quality {}".format(scale, rest))
+    return (rest, OrderedDict([(index, val_to_note(index, root)) for index in SCALE_QUALITY_DICT[rest]]))
+
+
+
+def check_scale(note, scale):
+    """ Return True if the note is valid. e.g. Mblues is not a valid scale, M is not a valid note.
+
+    :param str note: note to check its validity
+    :param str scale: the scale which includes the note
+    :rtype: bool
+    """
+    if note not in NOTE_VAL_DICT:
+        raise ValueError("Invalid scale {}: Unknown note {}".format(scale, note))
+    return True
+
