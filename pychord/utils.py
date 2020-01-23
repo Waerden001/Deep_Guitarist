@@ -31,7 +31,7 @@ def val_to_note(val, root="C"):
     :param str root: root of the key
     :rtype: str
     """
-    val = (val + NOTE_VAL_DICT[root]) % 12
+    val %=  12
     return SCALE_VAL_DICT[root][val]
 
 

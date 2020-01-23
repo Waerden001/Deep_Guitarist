@@ -4,6 +4,8 @@ from .constants.scales import RELATIVE_KEY_DICT
 from .parser import parse
 from .utils import transpose_note, display_appended, display_on, note_to_val
 
+#from_note_index has to be modified, different scales
+
 
 class Chord(object):
     """ Class to handle a chord.

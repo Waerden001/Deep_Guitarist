@@ -57,7 +57,7 @@ def parse_scale(scale):
 
     :param str chordscale: str expression of a scale, e.g. Cminblues, F#minpenta
     :rtype: (str, OrderedDict)
-    :return: (scale_quality, dict of scale notes and relative degrees), e.g. (majpenta, ((0, "C"), (2,"D"),(4, "E"),(7, "G"), (9, "A"), (12, "C")))
+    :return: (root, quality), e.g. (majpenta, (0,2,4,7,9,12))
     """
 
     if len(scale) > 1 and scale[1] in ("b", "#"):
@@ -67,14 +67,13 @@ def parse_scale(scale):
         root = scale[:1]
         rest = scale[1:]
     
-    print(root)
 
     check_scale(root, scale)
     if rest in SCALE_QUALITY_DICT:
         quality = Scale_Quality(rest)
     else:
         raise ValueError("Invalid scale{}: Unknown quality {}".format(scale, rest))
-    return (rest, OrderedDict([(index, val_to_note(index, root)) for index in SCALE_QUALITY_DICT[rest]]))
+    return root, quality
 
 
 

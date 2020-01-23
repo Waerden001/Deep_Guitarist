@@ -51,7 +51,7 @@ class Quality(object):
         components = [v + root_val for v in self.components]
 
         if visible:
-            components = [val_to_note(c, scale=root) for c in components]
+            components = [val_to_note(c, root) for c in components]
 
         return components
 
@@ -154,7 +154,7 @@ class Scale_Quality(object):
         components = [(v + root_val) % 12 for v in self.components]
 
         if visible:
-            components = [val_to_note(c, scale=root) for c in components]
+            components = [val_to_note(c, root) for c in components]
 
         return components
 

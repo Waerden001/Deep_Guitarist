@@ -90,3 +90,18 @@ SCALE_QUALITY_DICT = OrderedDict((
     ('minblues', (0, 3, 5, 6, 7, 10, 12)),
 ))
 
+
+TUNING_DICT = OrderedDict((
+    ('standard', ('E', 'A', 'D', 'G', 'B', 'E')),
+    ('dadgad', ('D', 'A', 'D', 'G', 'A', 'D')),
+    ('dsus4', ('D', 'A', 'D', 'G', 'A', 'D')),
+    ('dropd', ('D', 'A', 'D', 'G', 'B', 'E')),
+    ('openc', ('C', 'G', 'C', 'G', 'C', 'E')),
+    ('opendm', ('D', 'A', 'D', 'F', 'A', 'D ')),
+    ('gsus4', ('D', 'G', 'D', 'G', 'C', 'D')),
+    ('opengm', ('D', 'G', 'D', 'G', 'Bb','D')),
+    ('openg', ('D', 'G', 'D', 'G', 'B', 'D')),
+    ('opend',('D', 'A', 'D', 'F#', 'A', 'D')),
+    ('opena', ('E', 'A', 'C#', 'E', 'A', 'E')),
+
+))
