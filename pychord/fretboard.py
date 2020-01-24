@@ -1,5 +1,6 @@
 from .constants import TUNING_DICT, NOTE_VAL_DICT, VAL_NOTE_DICT
 from .chord import Chord
+from .scale import Scale
 from collections import OrderedDict
 
 ###Do we actually need OrderedDict???
@@ -35,23 +36,34 @@ class Fretboard(object):
         G# is the major third of E, one location is on the sixth string and fourth fret.
 
         """
-        if pattern in NOTE_VAL_DICT:
+        if isinstance(pattern, str) and pattern in NOTE_VAL_DICT:
             """"""
-            return [[coordinate[0], coordinate[1], 0] for string_num in [1,2,3,4,5,6] for coordinate in self._table[string_num] if coordinate[1]==pattern]
+            return [[coordinate[0], pattern, 0] for string_num in [1,2,3,4,5,6] for coordinate in self._table[string_num] if pattern in coordinate[1]]
         elif isinstance(pattern, Chord):
             relative_degree = pattern.quality.components
             ##TODO: Handle slash chords carefully
-            notes = pattern.components
-            return [[coordinate[0], coordinate[1], relative_degree[notes.index[coordinate[1]]]]
-                    for string_num in [1,2,3,4,5,6] for coordinate in self._table[string_num] if coordinate[1] in notes]
+            notes = pattern.components()
+            ans = []
+            for string_num in [1,2,3,4,5,6]:
+                for coordinate in self._table[string_num]:
+                    for note in notes:
+                        if note in coordinate[1]:
+                            ans.append([coordinate[0], note, relative_degree[notes.index(note)]])
+            return ans
+
             
         elif isinstance(pattern, Scale):
             ##TODO: implement the Scale class accordingly
             ##It seems that if we implement Scale class similarly to the chord class, this function is more or less the same.
             relative_degree = pattern.quality.components
-            notes = pattern.components 
-            return [[coordinate[0], coordinate[1], relative_degree[notes.index[coordinate[1]]]]
-                    for string_num in [1,2,3,4,5,6] for coordinate in self._table[string_num] if coordinate[1] in notes]
+            notes = pattern.components()
+            ans = []
+            for string_num in [1,2,3,4,5,6]:
+                for coordinate in self._table[string_num]:
+                    for note in notes:
+                        if note in coordinate[1]:
+                            ans.append([coordinate[0], note, relative_degree[notes.index(note)]])
+            return ans
         else:
             raise ValueError("Expected valid note or chord instance or scale instance instead of {}, type = {} ".format(pattern, type(pattern)))
 

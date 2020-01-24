@@ -51,6 +51,7 @@ class Chord(object):
     def __ne__(self, other):
         return not self.__eq__(other)
 
+    ##TODO: why do we need the 8th degree???
     @classmethod
     def from_note_index(cls, note, quality, scale):
         """ Create a Chord from note index in a scale
