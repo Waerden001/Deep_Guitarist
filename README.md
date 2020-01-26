@@ -12,6 +12,36 @@ Deepguitarist is a python library to handle chords, scales, fretboards, their vi
 $ pip install deepguitarist
 ```
 
+## Advanced Usage
+
+### Create note/chord/scale graphs on a fretboard with given tuning
+```python
+>>>from pychord import Fretboard, Chord, Scale
+>>>ST = Fretboard('standard', 12)
+>>>ST.texify(Chord('A6'))
+```
+![DeepGuitarist](./A6_Notes.png)
+```python
+>>>ST.texify(Chord('A6'), 'degree')
+```
+![DeepGuitarist](./A6_Degree.png)
+
+### Create a Chord from note index in a scale
+
+```python
+>>> Chord.from_note_index(note=1, quality="", scale="Cmaj")
+<Chord: C>  # I of C major
+>>> Chord.from_note_index(note=3, quality="m7", scale="Fmaj")
+<Chord: Am7>  # IIIm7 of F major
+>>> Chord.from_note_index(note=5, quality="7", scale="Amin")
+<Chord: E7>  # V7 of A minor
+```
+
+
+
+
+
+
 ## Basic Usage
 
 ### Create a Chord
@@ -91,31 +121,6 @@ True
 
 >>> cp[1]
 <Chord: Bb/D>
-```
-
-## Advanced Usage
-
-### Create note/chord/scale graphs on a fretboard with given tuning
-```python
->>>from pychord import Fretboard, Chord, Scale
->>>ST = Fretboard('standard', 12)
->>>ST.texify(Chord('A6'))
-```
-![DeepGuitarist](./A6_Notes.png)
-```python
->>>ST.texify(Chord('A6'), 'degree')
-```
-![DeepGuitarist](./A6_Degree.png)
-
-### Create a Chord from note index in a scale
-
-```python
->>> Chord.from_note_index(note=1, quality="", scale="Cmaj")
-<Chord: C>  # I of C major
->>> Chord.from_note_index(note=3, quality="m7", scale="Fmaj")
-<Chord: Am7>  # IIIm7 of F major
->>> Chord.from_note_index(note=5, quality="7", scale="Amin")
-<Chord: E7>  # V7 of A minor
 ```
 
 ## Supported Python Versions
