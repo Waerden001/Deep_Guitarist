@@ -19,6 +19,30 @@ NOTE_VAL_DICT = {
     'G#': 8,
 }
 
+NOTE_TEX_DICT = {
+    'Ab': 'A$\\flat$',
+    'A': 'A',
+    'A#': 'A$\\sharp$',
+    'Bb': 'B$\\flat$',
+    'B': 'B',
+    'Cb': 'C$\\flat$',
+    'C': 'C',
+    'C#': 'C$\\sharp$',
+    'Db': 'D$\\flat$',
+    'D': 'D',
+    'D#': 'D$\\sharp$',
+    'Eb': 'E$\\flat$',
+    'E': 'E',
+    'F': 'F',
+    'F#': 'F$\\sharp$',
+    'Gb': 'G$\\flat$',
+    'G': 'G',
+    'G#': 'G$\\sharp$',
+}
+
+
+
+
 VAL_NOTE_DICT = {
     0: ['C'],
     1: ['Db', 'C#'],

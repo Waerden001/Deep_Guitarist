@@ -1,4 +1,4 @@
-from .constants import TUNING_DICT, NOTE_VAL_DICT, VAL_NOTE_DICT, INTERVAL_COLOR_DICT, DEGREE_INTERVAL_DICT
+from .constants import TUNING_DICT, NOTE_VAL_DICT, VAL_NOTE_DICT, INTERVAL_COLOR_DICT, DEGREE_INTERVAL_DICT, NOTE_TEX_DICT
 from .chord import Chord
 from .scale import Scale
 from collections import OrderedDict
@@ -76,7 +76,7 @@ class Fretboard(object):
         note_tex = ''
         for ele in self.coordinates(pattern):
             node_type = INTERVAL_COLOR_DICT[ele[-1]]+'_node'
-            text = ele[1] if form == 'note' else DEGREE_INTERVAL_DICT[ele[-1]]
+            text = NOTE_TEX_DICT[ele[1]] if form == 'note' else DEGREE_INTERVAL_DICT[ele[-1]]
             string_num = 7-ele[0][0]
             fret = ele[0][1]
             if fret != 0:#Need to modify the base.txt to handle the open strings, now let's just ignore it
