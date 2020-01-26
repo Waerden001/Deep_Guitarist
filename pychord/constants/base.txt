@@ -1,0 +1,77 @@
+\documentclass[margin=.2cm]{standalone}
+
+\usepackage{tikz}
+\usetikzlibrary{calc,arrows}
+
+  %% We define the name of each number
+  \newcommand\savename[2]{\expandafter\xdef\csname name#1\endcsname{#2}}
+  \newcommand\getname[1]{\csname name#1\endcsname}
+
+
+\begin{document}
+
+\begin{tikzpicture}[
+    ynode/.style={draw=black!50,circle,fill=black!50,scale=.35,inner sep=1pt,minimum size=1.7em}, %%For markers and Buckles%%
+    black_node/.style={draw=black!50,circle,fill=black!50,scale=.35,inner sep=1pt,minimum size=1.7em},
+    white_node/.style={draw=white!50,circle,fill=white!50,scale=.35,inner sep=1pt,minimum size=1.7em},
+    red_node/.style={draw=red!50,circle,fill=red!50,scale=.35,inner sep=1pt,minimum size=1.7em},
+    orange_node/.style={draw=orange!50,circle,fill=orange!50,scale=.35,inner sep=1pt,minimum size=1.7em},
+    yellow_node/.style={draw=yellow!50,circle,fill=yellow!50,scale=.35,inner sep=1pt,minimum size=1.7em},
+    green_node/.style={draw=green!50,circle,fill=green!50,scale=.35,inner sep=1pt,minimum size=1.7em},
+    cyan_node/.style={draw=cyan!50,circle,fill=cyan!50,scale=.35,inner sep=1pt,minimum size=1.7em},
+    blue_node/.style={draw=blue!50,circle,fill=blue!50,scale=.35,inner sep=1pt,minimum size=1.7em},
+    purple_node/.style={draw=purple!50,circle,fill=purple!50,scale=.35,inner sep=1pt,minimum size=1.7em},
+    pink_node/.style={draw=pink!50,circle,fill=pink!50,scale=.35,inner sep=1pt,minimum size=1.7em}]
+
+  %%%% Draw the base and set coordinates %%%%
+  \begin{scope}[xscale=-15,yscale=.3,line width=.5]
+
+    \xdef\x{1}
+    %% Left line
+    \draw[line width=1.5] (1,1) -- (1,6);
+    \foreach \fret in {1,...,SCALE_LENGTH}{
+      %% Set coordinate for each string
+      \foreach \str in {1,...,6}{
+        \coordinate (\str-\fret) at (0.97193715634*\x,\str);
+      }
+      %% Set coordinate for the text above
+      \coordinate (Top-\fret) at (0.97193715634*\x,7);
+      %% Compute the position of the fret
+      \pgfmathsetmacro\x{\x * 0.94387431268}
+      \xdef\x{\x}
+      %% Draw the fret
+      \draw (\x,1) -- (\x,6);
+    }
+
+    %% Draw each string
+    \foreach \str in {1,...,6}{
+      \draw (1,\str) -- (0.97153194115*\x,\str);
+      \coordinate (start\str) at (1,\str);
+    }
+  \end{scope}
+
+  %% Draw the mark on the guitare
+  \foreach \f in {MARK}{
+    \draw[black!20,fill=black!10] ($(3-\f)!.5!(4-\f)$) circle (.08);
+  }
+  \draw[opacity=.20,fill,fill opacity=.10] (2-12) circle (.08) (5-12) circle (.08);
+  \foreach \n/\t in {0/C,1/C$\sharp$,2/D,3/D$\sharp$,4/E,5/F,6/F$\sharp$,7/G,8/G$\sharp$,9/A,10/A$\sharp$, 11/B}{
+    \savename{\n}{\t}
+  } %%%%SHARP KEY
+
+  %% Boucle on the string and the first note (given its number)
+  \foreach \str/\note in {TUNING}{
+    \node[anchor=east] at (start\str) {\scriptsize\getname{\note}};
+  }
+  
+  
+  
+%NOTES_INFORMATION%
+  
+  %% Number above each space
+  \foreach \fret in {1,...,SCALE_LENGTH}{
+    \node[scale=.8] at (Top-\fret) {\tiny \fret};
+  }
+\end{tikzpicture}
+
+\end{document}

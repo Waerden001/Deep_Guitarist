@@ -1,4 +1,4 @@
-from .constants import TUNING_DICT, NOTE_VAL_DICT, VAL_NOTE_DICT
+from .constants import TUNING_DICT, NOTE_VAL_DICT, VAL_NOTE_DICT, INTERVAL_COLOR_DICT, DEGREE_INTERVAL_DICT
 from .chord import Chord
 from .scale import Scale
 from collections import OrderedDict
@@ -26,6 +26,7 @@ class Fretboard(object):
         
     def table(self):
         return self._table
+    
     def coordinates(self, pattern):
         """Find all coordinates on fretboard of note, chord or scale. 
 
@@ -66,6 +67,45 @@ class Fretboard(object):
             return ans
         else:
             raise ValueError("Expected valid note or chord instance or scale instance instead of {}, type = {} ".format(pattern, type(pattern)))
+    
+    
+    #This is kind of like a decorator of the coordinates function. Should be optimized later.
+    def note_tex(self, pattern, form = 'note'):
+        """
+        """
+        note_tex = ''
+        for ele in self.coordinates(pattern):
+            node_type = INTERVAL_COLOR_DICT[ele[-1]]+'_node'
+            text = ele[1] if form == 'note' else DEGREE_INTERVAL_DICT[ele[-1]]
+            string_num = 7-ele[0][0]
+            fret = ele[0][1]
+            if fret != 0:#Need to modify the base.txt to handle the open strings, now let's just ignore it
+                note_tex += """\\node[{}] at ({}-{})""".format(node_type, string_num, fret) + '{'+"\\textbf{{"+text + "}}"+"};\n"
+        
+        return note_tex
+    
+    ###Notice the difference of the orderings of strings between the python code and tex file
+    def texify(self, pattern, form = 'note'):
+        length_info = str(self._length)
+        mark_info = "3,5,7,9,15,17" if self._length == 24 else "3,5,7,9"
+        tuning_info = ', '.join([str(k)+'/'+ str(NOTE_VAL_DICT[self._notes[k-1]]) for k in range(1,7)])
+        note_info = self.note_tex(pattern, form)
+
+        fin = open("C:\\Users\\Waerden\\Desktop\\Deep_guitarist\\pychord\\constants\\base.txt", "rt")
+        fout = open("C:\\Users\\Waerden\\Desktop\\Deep_guitarist\\pychord\\constants\\output.txt", "w")
+        for line in fin:
+            line = line.replace("SCALE_LENGTH", length_info)
+            line = line.replace("MARK", mark_info)
+            line = line.replace("TUNING", tuning_info)
+            line = line.replace("%NOTES_INFORMATION%", note_info)
+            print(line)
+            fout.write(line)
+        
+        fin.close()
+        fout.close()
+        
+
+
 
     def _setup(self):
         """"""
