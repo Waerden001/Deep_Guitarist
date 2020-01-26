@@ -9,7 +9,7 @@ Deepguitarist is a python library to handle chords, scales, fretboards, their vi
 ## Installation
 
 ```sh
-$ pip install pychord
+$ pip install deepguitarist
 ```
 
 ## Basic Usage
