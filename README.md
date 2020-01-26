@@ -95,6 +95,18 @@ True
 
 ## Advanced Usage
 
+### Create note/chord/scale graphs on a fretboard with given tuning
+```python
+>>>from pychord import Fretboard, Chord, Scale
+>>>ST = Fretboard('standard', 12)
+>>>ST.texify(Chord('A6'))
+```
+![DeepGuitarist](./A6_Notes.png)
+```python
+>>>ST.texify(Chord('A6'), 'degree')
+```
+![DeepGuitarist](./A6_Degree.png)
+
 ### Create a Chord from note index in a scale
 
 ```python
@@ -113,9 +125,7 @@ True
 
 ## Links
 
-- PyPI: https://pypi.python.org/pypi/pychord
 - GitHub: https://github.com/yuma-m/pychord
-- Documentation: http://pychord.readthedocs.io/en/latest/
 
 ## Author
 
