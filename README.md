@@ -125,7 +125,7 @@ True
 
 ## Links
 
-- GitHub: https://github.com/yuma-m/pychord
+- GitHub: https://github.com/Waerden001/deepguitarist
 
 ## Author
 
