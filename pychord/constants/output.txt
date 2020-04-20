@@ -60,36 +60,54 @@
   } %%%%SHARP KEY
 
   %% Boucle on the string and the first note (given its number)
-  \foreach \str/\note in {1/4, 2/9, 3/2, 4/7, 5/11, 6/4}{
+  \foreach \str/\note in {1/2, 2/9, 3/2, 4/6, 5/11, 6/2}{
     \node[anchor=east] at (start\str) {\scriptsize\getname{\note}};
   }
   
   
   
-\node[yellow_node] at (6-2){\textbf{{6}}};
-\node[black_node] at (6-5){\textbf{{0}}};
-\node[blue_node] at (6-9){\textbf{{3}}};
-\node[white_node] at (6-12){\textbf{{5}}};
-\node[blue_node] at (5-2){\textbf{{3}}};
-\node[white_node] at (5-5){\textbf{{5}}};
-\node[yellow_node] at (5-7){\textbf{{6}}};
-\node[black_node] at (5-10){\textbf{{0}}};
-\node[black_node] at (4-2){\textbf{{0}}};
-\node[blue_node] at (4-6){\textbf{{3}}};
-\node[white_node] at (4-9){\textbf{{5}}};
-\node[yellow_node] at (4-11){\textbf{{6}}};
-\node[white_node] at (3-2){\textbf{{5}}};
-\node[yellow_node] at (3-4){\textbf{{6}}};
-\node[black_node] at (3-7){\textbf{{0}}};
-\node[blue_node] at (3-11){\textbf{{3}}};
-\node[blue_node] at (2-4){\textbf{{3}}};
-\node[white_node] at (2-7){\textbf{{5}}};
-\node[yellow_node] at (2-9){\textbf{{6}}};
-\node[black_node] at (2-12){\textbf{{0}}};
-\node[yellow_node] at (1-2){\textbf{{6}}};
-\node[black_node] at (1-5){\textbf{{0}}};
-\node[blue_node] at (1-9){\textbf{{3}}};
-\node[white_node] at (1-12){\textbf{{5}}};
+\node[white_node] at (6-2){\textbf{{E}}};
+\node[yellow_node] at (6-4){\textbf{{F$\sharp$}}};
+\node[green_node] at (6-6){\textbf{{G$\sharp$}}};
+\node[black_node] at (6-7){\textbf{{A}}};
+\node[red_node] at (6-9){\textbf{{B}}};
+\node[blue_node] at (6-11){\textbf{{C$\sharp$}}};
+\node[orange_node] at (6-12){\textbf{{D}}};
+\node[blue_node] at (5-2){\textbf{{C$\sharp$}}};
+\node[orange_node] at (5-3){\textbf{{D}}};
+\node[white_node] at (5-5){\textbf{{E}}};
+\node[yellow_node] at (5-7){\textbf{{F$\sharp$}}};
+\node[green_node] at (5-9){\textbf{{G$\sharp$}}};
+\node[black_node] at (5-10){\textbf{{A}}};
+\node[red_node] at (5-12){\textbf{{B}}};
+\node[green_node] at (4-2){\textbf{{G$\sharp$}}};
+\node[black_node] at (4-3){\textbf{{A}}};
+\node[red_node] at (4-5){\textbf{{B}}};
+\node[blue_node] at (4-7){\textbf{{C$\sharp$}}};
+\node[orange_node] at (4-8){\textbf{{D}}};
+\node[white_node] at (4-10){\textbf{{E}}};
+\node[yellow_node] at (4-12){\textbf{{F$\sharp$}}};
+\node[white_node] at (3-2){\textbf{{E}}};
+\node[yellow_node] at (3-4){\textbf{{F$\sharp$}}};
+\node[green_node] at (3-6){\textbf{{G$\sharp$}}};
+\node[black_node] at (3-7){\textbf{{A}}};
+\node[red_node] at (3-9){\textbf{{B}}};
+\node[blue_node] at (3-11){\textbf{{C$\sharp$}}};
+\node[orange_node] at (3-12){\textbf{{D}}};
+\node[red_node] at (2-2){\textbf{{B}}};
+\node[blue_node] at (2-4){\textbf{{C$\sharp$}}};
+\node[orange_node] at (2-5){\textbf{{D}}};
+\node[white_node] at (2-7){\textbf{{E}}};
+\node[yellow_node] at (2-9){\textbf{{F$\sharp$}}};
+\node[green_node] at (2-11){\textbf{{G$\sharp$}}};
+\node[black_node] at (2-12){\textbf{{A}}};
+\node[white_node] at (1-2){\textbf{{E}}};
+\node[yellow_node] at (1-4){\textbf{{F$\sharp$}}};
+\node[green_node] at (1-6){\textbf{{G$\sharp$}}};
+\node[black_node] at (1-7){\textbf{{A}}};
+\node[red_node] at (1-9){\textbf{{B}}};
+\node[blue_node] at (1-11){\textbf{{C$\sharp$}}};
+\node[orange_node] at (1-12){\textbf{{D}}};
 
   
   %% Number above each space

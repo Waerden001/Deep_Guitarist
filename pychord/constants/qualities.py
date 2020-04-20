@@ -102,6 +102,8 @@ TUNING_DICT = OrderedDict((
     ('opengm', ('D', 'G', 'D', 'G', 'Bb','D')),
     ('openg', ('D', 'G', 'D', 'G', 'B', 'D')),
     ('opend',('D', 'A', 'D', 'F#', 'A', 'D')),
+    ('opend6',('D', 'A', 'D', 'F#', 'B', 'D')),
     ('opena', ('E', 'A', 'C#', 'E', 'A', 'E')),
+    ('eadd11', ('E', 'A', 'D', 'G#', 'A', 'E')),
 
 ))
