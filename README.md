@@ -1,4 +1,4 @@
-# Deep Guitarist [![Build Status](https://travis-ci.org/yuma-m/pychord.svg?branch=master)](https://travis-ci.org/yuma-m/pychord) [![Documentation Status](https://readthedocs.org/projects/pychord/badge/?version=latest)](http://pychord.readthedocs.io/en/latest/?badge=latest)
+# Deep Guitarist [![Build Status](https://)](https://travis-ci.org/yuma-m/pychord) [![Documentation Status](https://)
 
 ![DeepGuitarist](./guitar.png)
 
