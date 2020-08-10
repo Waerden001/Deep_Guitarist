@@ -1,4 +1,4 @@
-# Deep Guitarist [![Build Status](https://)](https://travis-ci.org/yuma-m/pychord) [![Documentation Status](https://)
+# Deep Guitarist 
 
 ![DeepGuitarist](./guitar.png)
 
