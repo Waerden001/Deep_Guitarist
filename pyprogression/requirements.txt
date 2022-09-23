@@ -9,7 +9,7 @@ Keras-Preprocessing==1.0.5
 Markdown==3.0.1
 mingus==0.5.1
 numpy==1.16.0
-protobuf==3.6.1
+protobuf==3.18.3
 pydot==1.4.1
 pyparsing==2.4.0
 PyYAML==3.13
